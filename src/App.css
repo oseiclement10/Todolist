@@ -1,0 +1,58 @@
+/* @import "~antd/dist/antd.css"; */
+
+
+#components-layout-demo-fixed-sider .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+  color: black;
+}
+
+.site-layout-background-main {
+  color: black;
+}
+
+/* margin left when collapsed */
+.adaptive {
+  margin-left: 200px;
+}
+
+.adaptive-collapsed {
+  margin-left: 80px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.min-h-screen {
+  min-height: 50vh;
+}
+
+.mini-head {
+  color: gray;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+.gray-text {
+  color: gray;
+}
+
+/* General Styles */
+
+.btn-primary {
+  border-radius: 0.5rem;
+  padding-top: 0.7rem;
+  padding-bottom: 2rem;
+}
+
+.card{
+    background-color: theme('colors.white');
+    border-radius: theme('borderRadius.lg');
+    padding: theme('spacing.6');
+    box-shadow: theme('boxShadow.md');
+}

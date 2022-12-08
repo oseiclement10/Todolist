@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+   background-color: #205CA2;
+   color: white !important; 
+   padding:3px 8px;
+  }
+  .ant-tabs-ink-bar {
+   display:none
+ } */
