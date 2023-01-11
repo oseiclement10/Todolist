@@ -56,3 +56,23 @@
     padding: theme('spacing.6');
     box-shadow: theme('boxShadow.md');
 }
+
+.row{
+  display:flex;
+}
+.row .box{
+ height:30px;
+ width:30px;
+  border:1px solid black;
+  cursor: pointer;
+}
+
+.gameboard{
+  width:250px;
+  margin:auto;
+  margin-top:2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

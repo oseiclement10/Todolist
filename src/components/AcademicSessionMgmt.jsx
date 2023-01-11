@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 
 import { Helmet } from "react-helmet";
 
@@ -6,12 +6,10 @@ import { Tabs, Col, Row } from "antd";
 
 // layout
 import Wrapper from "./Wrapper";
-import { SessionDashboard } from "./SessionDashboard";
+import  SessionDashboard  from "./SessionDashboard";
 
 export const AcademicSessionMgmt = () => {
-  const { TabPane } = Tabs;
-  const [mode, setMode] = useState('top');
- 
+  
   return (
     <Wrapper header="Academic Session Management" alignment="top">
       <Helmet>

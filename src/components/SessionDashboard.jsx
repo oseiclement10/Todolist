@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Radio, Space, Tabs } from 'antd';
 import Overview from './Overview';
+import ClassList from './ClassList';
 
 
-export const SessionDashboard = () => {
+ const SessionDashboard = () => {
     const {TabPane} = Tabs;
     return (
       <Tabs
@@ -29,7 +30,7 @@ export const SessionDashboard = () => {
        </TabPane>
 
        <TabPane tab="Classes" key="2">
-         
+            <ClassList/>
        </TabPane>
        
        <TabPane tab="Students" key="3">
@@ -51,3 +52,5 @@ export const SessionDashboard = () => {
       </Tabs>
   );
 };
+
+export default SessionDashboard;

@@ -3,6 +3,7 @@ import {Col,Form,Row,Select } from 'antd';
 import {Chart as ChartJS,Tooltip,Legend, ArcElement} from 'chart.js';
 import { Pie} from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
+import SelectTerm from './Term';
 
 ChartJS.register(ArcElement,Tooltip,Legend);
 
@@ -46,34 +47,15 @@ const Overview = () => {
         }
     }
    
-    
-    //mockdata for terms
-    const terms = ["Term 1","Term 2","Term 3"];
-
     return(
         <>
-            <Form>
-                <Row>
-                    <Col span={6}>
-                     <Form.Item label="Select Term">
-                         <Select 
-                             options={terms.map(elem=>{
-                                 return {label:elem, value:elem}
-                             })}
-                             placeholder={"--Select Term"}
-                         >
-                        </Select>
-                    </Form.Item>
-                    </Col>
-                </Row>
-            </Form>
+            <SelectTerm/>
             <div class="container grid grid-cols-3 gap-4">
-         
              <div class="col-span-1 flex flex-col bg-white shadow-md p-4 space-y-3">
-              <h2 class="mb-2 font-bold text-1xl">
+              <h2 class="mb-2 font-bold text-sm">
                 NUMBER OF ENROLLED STUDENTS
               </h2>
-              <p class="text-md text-justify">
+              <p class="text-justify">
                 Total Students
               </p>
               <h2 class="mb-2 font-bold-600 text-sky-800 text-4xl">

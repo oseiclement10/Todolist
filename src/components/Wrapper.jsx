@@ -352,7 +352,7 @@ const Wrapper = ({ children, header, subheader,alignment }) => {
             </Space>
           </Space>
         </Header>
-        {/* some pages to move towards top */}
+        {/* some pages to move upwards than others */}
         {alignment==="top"?
            <Content style={{ margin: "1px 4px 0", overflow: "initial" }}>
             <div className="site-layout-background-main" style={{ padding: 16 }}>
