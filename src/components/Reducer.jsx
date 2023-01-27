@@ -7,6 +7,7 @@ import  {BsCheckCircleFill} from "react-icons/bs";
 
 const Reducer = () => {
 
+    
    const Done = ({trigger}) => (
             <div className="ant-center w-1/2">
                 <BsCheckCircleFill style={{color:"green",cursor:"pointer"}} onClick={trigger} />
