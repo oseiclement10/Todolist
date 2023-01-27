@@ -7,7 +7,9 @@ import  {BsCheckCircleFill} from "react-icons/bs";
 
 const Reducer = () => {
 
-    
+
+    // Status
+
    const Done = ({trigger}) => (
             <div className="ant-center w-1/2">
                 <BsCheckCircleFill style={{color:"green",cursor:"pointer"}} onClick={trigger} />
@@ -24,10 +26,49 @@ const Reducer = () => {
                </del>
     }
  
+
     const [todoMessage,setTodoMessage] = useState("");
     const [loading,setLoading] = useState(false);
     const [isEditable,setIsEditable] = useState(false);
 
+    
+
+    const reducer = (state,action) => {
+            switch(action.type){
+               case "ADD":
+                 let todo = {
+                    id:action.id,
+                    number:state.length,
+                    activity:action.activity,
+                    key:action.id,
+                    complete:0
+                }
+                 clearTodo();
+                 return [...state,todo];
+               case "DELETE":
+                return state.filter(elem=>elem.id!==action.id);
+               
+                case "TOGGLECOMPLETE":
+                return state.map(elem=>{
+                    if(elem.id===action.id){
+                        return {...elem,complete:!elem.complete}
+                    }else return elem
+                });
+               
+                case "EDIT":
+                 return state.map(elem=>{
+                    if(elem.id===action.id){
+                        return {...elem,activity:action.activity,complete:action.complete}
+                    }else{ 
+                        return elem;
+                    }
+                 })
+
+               default: return state;  
+            }
+    }
+  
+    // table data
 
     let initialTodos = [
         {   id:1,
@@ -66,45 +107,6 @@ const Reducer = () => {
             complete:0,
           },
     ]
-    const [ID,setID] = useState(initialTodos.length+1);
-
-    const clearTodo = () => setTodoMessage("");
-
-    const reducer = (state,action) => {
-            switch(action.type){
-               case "ADD":
-                 let todo = {
-                    id:action.id,
-                    number:state.length,
-                    activity:action.activity,
-                    key:action.id,
-                    complete:0
-                }
-                 clearTodo();
-                 return [...state,todo];
-               case "DELETE":
-                return state.filter(elem=>elem.id!==action.id);
-               
-                case "TOGGLECOMPLETE":
-                return state.map(elem=>{
-                    if(elem.id===action.id){
-                        return {...elem,complete:!elem.complete}
-                    }else return elem
-                });
-               
-                case "EDIT":
-                 return state.map(elem=>{
-                    if(elem.id===action.id){
-                        return {...elem,activity:action.activity,complete:action.complete}
-                    }else{ 
-                        return elem;
-                    }
-                 })
-
-               default: return state;  
-            }
-    }
-  
     const columns = [
     {   
         title:"#",
@@ -155,9 +157,14 @@ const Reducer = () => {
     },
     ];
 
+    //todo actions
+
     const [todos,dispatch] = useReducer(reducer,initialTodos);
 
-    
+    const [ID,setID] = useState(initialTodos.length+1);
+
+    const clearTodo = () => setTodoMessage("");
+
     const addTodo = (todo) => {
        if(todo){
         dispatch({
