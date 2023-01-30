@@ -277,21 +277,21 @@ const Reducer = () => {
         <>
             <div className=" overall">
 
-                <div className="container background space-y-8 mx-auto mt-5">
+                <div className="w-3/4 bg-white p-12 rounded-lg drop-shadow-md h-7/8 opacity-95 overflow-y-hidden space-y-8 mx-auto mt-5 lg:w-2/4">
                     <div className="beforeTable space-y-8">
                         <div className="header pb-3">
-                            <h1 className="text-4xl text-slate-700 font-bold">
+                            <h1 className="text-3xl text-slate-700 font-bold md:text-4xl">
                                 Clemzy's Todo List
                             </h1>
                         </div>
 
                         
-                        <div className="row mt-3 items-center space-x-6">
+                        <div className="flex mt-3 items-center space-x-6">
                             
                             <div className="">
                                 <input 
                                     type="text" 
-                                    className="rounded-md" 
+                                    className="rounded-md p-1 lg:p-2" 
                                     placeholder="...type here" 
                                     value={todoMessage}
                                     onChange={handleTextChange}
@@ -301,8 +301,8 @@ const Reducer = () => {
                         
                             <button
                                 className={isEditable?
-                                    "rounded-md p-2 bg-slate-700 text-white hoverable"
-                                    : "rounded-md p-2 bg-slate-500 text-white cursor-no-drop"
+                                    "rounded-md p-1 bg-slate-700 text-white hoverable lg:p-2"
+                                    : "rounded-md p-1 bg-slate-500 text-white cursor-no-drop lg:p-2"
                                 }
                                
                                 onClick={()=>addTodo(todoMessage)}
@@ -317,6 +317,7 @@ const Reducer = () => {
                     <Row>
                         <Col span={24}>
                             <Table
+                             size="small"
                              loading={loading}
                              columns={columns}
                              dataSource={dataSource}
