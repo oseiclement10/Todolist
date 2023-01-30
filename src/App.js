@@ -1,11 +1,11 @@
 import './App.css';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
-import Reducer from "./components/Reducer";
+import TodoList from './components/TodoList';
 function App() {
   return (
     <BrowserRouter>
      <Routes>
-        <Route path="*" exact element={<Reducer/>} />
+        <Route path="*" exact element={<TodoList/>} />
      </Routes>
     </BrowserRouter>
   );

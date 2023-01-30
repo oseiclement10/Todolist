@@ -1,14 +1,13 @@
 import React,{useReducer, useState} from "react";
 import {Row,Col,Table,Button,Modal,notification} from 'antd';
 import { MdEdit,MdDelete,MdOutlineRadioButtonUnchecked } from "react-icons/md";
-import { useEffect } from "react";
 import  {BsCheckCircleFill} from "react-icons/bs";
  
 
-const Reducer = () => {
+const TodoList = () => {
 
 
-    // Status
+    // Table Statuses
 
    const Done = ({trigger}) => (
             <div className="ant-center w-1/2">
@@ -33,40 +32,7 @@ const Reducer = () => {
 
     
 
-    const reducer = (state,action) => {
-            switch(action.type){
-               case "ADD":
-                 let todo = {
-                    id:action.id,
-                    number:state.length,
-                    activity:action.activity,
-                    key:action.id,
-                    complete:0
-                }
-                 clearTodo();
-                 return [...state,todo];
-               case "DELETE":
-                return state.filter(elem=>elem.id!==action.id);
-               
-                case "TOGGLECOMPLETE":
-                return state.map(elem=>{
-                    if(elem.id===action.id){
-                        return {...elem,complete:!elem.complete}
-                    }else return elem
-                });
-               
-                case "EDIT":
-                 return state.map(elem=>{
-                    if(elem.id===action.id){
-                        return {...elem,activity:action.activity,complete:action.complete}
-                    }else{ 
-                        return elem;
-                    }
-                 })
 
-               default: return state;  
-            }
-    }
   
     // table data
 
@@ -158,7 +124,40 @@ const Reducer = () => {
     ];
 
     //todo actions
+    const reducer = (state,action) => {
+        switch(action.type){
+           case "ADD":
+             let todo = {
+                id:action.id,
+                number:state.length,
+                activity:action.activity,
+                key:action.id,
+                complete:0
+            }
+            
+             return [...state,todo];
+           case "DELETE":
+            return state.filter(elem=>elem.id!==action.id);
+           
+            case "TOGGLECOMPLETE":
+            return state.map(elem=>{
+                if(elem.id===action.id){
+                    return {...elem,complete:!elem.complete}
+                }else return elem
+            });
+           
+            case "EDIT":
+             return state.map(elem=>{
+                if(elem.id===action.id){
+                    return {...elem,activity:action.activity,complete:action.complete}
+                }else{ 
+                    return elem;
+                }
+             })
 
+           default: return state;  
+        }
+}
     const [todos,dispatch] = useReducer(reducer,initialTodos);
 
     const [ID,setID] = useState(initialTodos.length+1);
@@ -174,6 +173,7 @@ const Reducer = () => {
         })
         setID(oldId=>oldId+1)
         setIsEditable(false);
+        clearTodo();
         notification["success"]({
             message:"Added Todo",
             duration:1,
@@ -257,13 +257,8 @@ const Reducer = () => {
      setIsModalOn(false);
  }
 
-
-
-    useEffect(()=>{
-
-    },[loading])
-
     let dataSource = [];
+
     if(!loading){
         todos.forEach((element,index) => {
             dataSource.push({
@@ -275,7 +270,7 @@ const Reducer = () => {
     return (
          
         <>
-            <div className=" overall">
+            <div className=" main-container h-full w-full fixed">
 
                 <div className="w-3/4 bg-white p-12 rounded-lg drop-shadow-md h-7/8 opacity-95 overflow-y-hidden space-y-8 mx-auto mt-5 lg:w-2/4">
                     <div className="beforeTable space-y-8">
@@ -301,7 +296,7 @@ const Reducer = () => {
                             <button
                                 className={isEditable?
                                     "rounded-md  bg-slate-700 text-white hoverable px-5 py-1 md:px-3"
-                                    :"rounded-md bg-slate-500 text-white cursor-no-drop px-5 py-1 px-3"
+                                    :"rounded-md bg-slate-500 text-white cursor-no-drop px-5 py-1 md:px-3"
                                 }
                                
                                 onClick={()=>addTodo(todoMessage)}
@@ -312,7 +307,8 @@ const Reducer = () => {
                         </div>
 
                     </div>
-
+                    
+                    {/* Table */}
                     <Row>
                         <Col span={24}>
                             <Table
@@ -346,7 +342,8 @@ const Reducer = () => {
                     ?
                     <div className="">
                     <div className="inp my-5">
-                      <input type="text" className="rounded-md w-4/6 border-gray-400" value={modalInfo.activity} onChange={handleTextEdit}/>
+                      <input type="text" className="rounded-md w-4/6 p-1 border-gray-400 md:w-3/6" value={modalInfo.activity} onChange={handleTextEdit}/>
+                      
                     </div>
                     
                     <div>
@@ -402,4 +399,4 @@ const Reducer = () => {
            )
 }
 
-export default Reducer;
+export default TodoList;
