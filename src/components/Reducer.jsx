@@ -129,7 +129,7 @@ const Reducer = () => {
                 <Pending trigger={()=>toggleComplete(record)}/>
     },
     {
-        title: 'Actions',
+        title: 'Action',
         dataIndex:'actions',
         render:(_,record)=>{
             return(
@@ -280,34 +280,33 @@ const Reducer = () => {
                 <div className="w-3/4 bg-white p-12 rounded-lg drop-shadow-md h-7/8 opacity-95 overflow-y-hidden space-y-8 mx-auto mt-5 lg:w-2/4">
                     <div className="beforeTable space-y-8">
                         <div className="header pb-3">
-                            <h1 className="text-3xl text-slate-700 font-bold md:text-4xl">
+                            <h1 className="text-3xl text-slate-700 text-center font-bold md:text-4xl md:text-left">
                                 Clemzy's Todo List
                             </h1>
                         </div>
 
                         
-                        <div className="flex mt-3 items-center space-x-6">
+                        <div className="flex mt-3 space-x-2 md:space-x-4">
                             
-                            <div className="">
+                          
                                 <input 
                                     type="text" 
-                                    className="rounded-md p-1 lg:p-2" 
+                                    className="rounded-md p-1 w-4/6 md:w-3/6" 
                                     placeholder="...type here" 
                                     value={todoMessage}
                                     onChange={handleTextChange}
                                 />
-                            </div>
-
+                
                         
                             <button
                                 className={isEditable?
-                                    "rounded-md p-1 bg-slate-700 text-white hoverable lg:p-2"
-                                    : "rounded-md p-1 bg-slate-500 text-white cursor-no-drop lg:p-2"
+                                    "rounded-md  bg-slate-700 text-white hoverable px-5 py-1 md:px-3"
+                                    :"rounded-md bg-slate-500 text-white cursor-no-drop px-5 py-1 px-3"
                                 }
                                
                                 onClick={()=>addTodo(todoMessage)}
                             >
-                                Add Todo
+                                Add 
                             </button>
                            
                         </div>

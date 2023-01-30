@@ -41,12 +41,7 @@
 
 @media only screen and (max-width:786px) {
     .beforeTable{
-      background-position:100%;
+     background-image: none;
     }
 }
 
-@media only screen and (max-width:600px){
-  .beforeTable{
-    background-image: none;
-  }
-}
