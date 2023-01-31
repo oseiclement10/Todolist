@@ -77,7 +77,8 @@ const TodoList = () => {
     {   
         title:"#",
         dataIndex:"number",
-        key:"number"
+        key:"number",
+        width:"10%"
     },
     {
         title: 'Todo ',
